@@ -155,14 +155,11 @@ window.addEventListener("DOMContentLoaded", () => {
     render() {
       const element = document.createElement("div");
       if (this.classes.length === 0) {
-        this.element = "menu__item";
-        element.classList.add(this.element);
+        this.classes = "menu__item";
+        element.classList.add(this.classes);
       } else {
-        this.classes.forEach((className) =>
-          SVGFEFuncAElement.classList.add(className)
-        );
+        this.classes.forEach((className) => element.classList.add(className));
       }
-      this.classes.forEach((className) => element.classList.add(className));
       element.innerHTML = `
                 <img src=${this.src} alt=${this.alt}>
                 <h3 class="menu__item-subtitle">${this.title}</h3>
@@ -235,7 +232,7 @@ window.addEventListener("DOMContentLoaded", () => {
       display: block;
       margin: 0 auto;
       `;
-      // form.append(statusMessage);
+      form.append(statusMessage);
       form.insertAdjacentElement("afterend", statusMessage);
 
       const formData = new FormData(form);
@@ -283,7 +280,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 4000);
   }
 
-  fetch("db.json")
+  fetch("dhttp://localhost:3000/menu")
     .then((data) => data.json())
     .then((res) => console.log(res));
 });
